@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="Diemos-fw-2.png" alt="Diemos-fw logo" style="width: 80%; max-width: 800px;">
+  <img src="Diemos-fw-2.png" alt="Diemos-fw logo" style="width: 100%; max-width: 1000px;">
 </div>
 
 ## Description
