@@ -1,3 +1,4 @@
+![Diemos-fw logo](Diemos-fw.png)
 # Diemos-fw
 ## Description
 Diemos-fw acts as an abstraction layer for iptables
