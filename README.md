@@ -1,5 +1,8 @@
-![Diemos-fw logo](Diemos-fw-1.png)
-# Diemos-fw
+
+<div align="center">
+  <img src="Diemos-fw-1.png" alt="Diemos-fw logo" width="300">
+</div>
+
 ## Description
 Diemos-fw acts as an abstraction layer for iptables
 Diemos-fw simplifies firewall rule management by providing a clean, readable syntax. It eliminates the tedious work of writing raw iptables/nftables commands, allowing administrators to focus on designing effective security policies rather than wrestling with complex implementation details.
