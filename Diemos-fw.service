@@ -1,0 +1,11 @@
+[Unit]
+Description=Diemos-fw FireWall Service
+After=network.target
+
+[Service]
+ExecStart=Diemos-fw restore
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
