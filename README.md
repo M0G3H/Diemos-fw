@@ -15,7 +15,7 @@ Automatically creates matching OUTPUT rules for allowed INPUT connections
 New rules are inserted at the top of the chain (position #1)  
 
 ### 3.Advance Filtering  
-Port-Specific Filtering  -> also ipv6
+Port-Specific Filtering  -> also ipv6  
 Host-Based Filtering  
 
 
