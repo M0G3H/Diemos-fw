@@ -8,11 +8,13 @@ Diemos-fw acts as an abstraction layer for iptables
 Diemos-fw simplifies firewall rule management by providing a clean, readable syntax. It eliminates the tedious work of writing raw iptables/nftables commands, allowing administrators to focus on designing effective security policies rather than wrestling with complex implementation details.
 
 ## Feature
-###1.Stateful Connection Handling (Implicit)  
+### 1.Stateful Connection Handling (Implicit)  
 Automatically creates matching OUTPUT rules for allowed INPUT connections  
-###2.Rule Precedence Management  
+
+### 2.Rule Precedence Management  
 New rules are inserted at the top of the chain (position #1)  
-###3.Advance Filtering  
+
+### 3.Advance Filtering  
 Port-Specific Filtering  -> also ipv6
 Host-Based Filtering  
 
