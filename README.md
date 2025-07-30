@@ -9,4 +9,4 @@ Diemos-fw simplifies firewall rule management by providing a clean, readable syn
 
 ## Installing Diemos-fw
 The package need to be compiled so make sure you have "GO"  
-first git clone Repo and then build it with `go build`
+first `git clone` Repo and then build it with `go build`
