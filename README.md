@@ -20,8 +20,19 @@ Host-Based Filtering
 
 
 ## Installing Diemos-fw
-The package need to be compiled so make sure you have "GO"  
-first `git clone` Repo and then build it with `go build` then you have binary file  
+The package need to be compiled so make sure you have "GO"
+```bash
+git clone https://github.com/M0G3H/Diemos-fw.git
+go build
+install -m 755 Diemos-fw /usr/local/bin
+```
+and if you want Diemos-fw to be always up , do this
+```bash
+cp Diemos-fw.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl start Diemos-fw.service
+systemctl enable Diemos-fw.service
+```
 
 ## Getting started
 just type `Diemos-fw`  
