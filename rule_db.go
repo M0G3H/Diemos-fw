@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"time"
 	"database/sql"
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -11,6 +13,7 @@ type Rule struct {
 	Proto  string
 	Port   string
 	Action string
+	DateModified string
 }
 
 func openRuleDB(path string) (*sql.DB, error) {
@@ -19,13 +22,13 @@ func openRuleDB(path string) (*sql.DB, error) {
 		return nil, err
 	}
 
-	// Initialize table if not exists
 	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS rules (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		host TEXT NOT NULL,
 		proto TEXT NOT NULL,
 		port TEXT NOT NULL,
-		action TEXT NOT NULL
+		action TEXT NOT NULL,
+		dateModified TEXT NOT NULL
 	)`)
 
 	if err != nil {
@@ -57,10 +60,25 @@ func setDefaultPolicyInDB(db *sql.DB, policy string) error {
 	return err
 }
 
+func ruleExists(db *sql.DB, rule *Rule) bool {
+	qry := fmt.Sprintf("SELECT id FROM rules WHERE host=\"%s\" AND proto=\"%s\" AND port=\"%s\"", rule.Host, rule.Proto, rule.Port)
+	rows, err := db.Query(qry)
+	if err != nil {
+                return false
+        }
+        defer rows.Close()
+
+	for rows.Next() {
+		return true
+	}
+	return false
+}
 
 func addRuleToDB(db *sql.DB, rule Rule) error {
-	stmt := `INSERT INTO rules (host, proto, port, action) VALUES (?, ?, ?, ?)`
-	_, err := db.Exec(stmt, rule.Host, rule.Proto, rule.Port, rule.Action)
+	now := time.Now()
+	formattedDate := now.Format("2006-01-02 15:04:05")
+	stmt := `INSERT INTO rules (host, proto, port, action, dateModified) VALUES (?, ?, ?, ?, ?)`
+	_, err := db.Exec(stmt, rule.Host, rule.Proto, rule.Port, rule.Action, formattedDate)
 	return err
 }
 
@@ -71,7 +89,7 @@ func delRuleFromDB(db *sql.DB, rule Rule) error {
 }
 
 func getAllRules(db *sql.DB) ([]Rule, error) {
-	rows, err := db.Query(`SELECT id, host, proto, port, action FROM rules`)
+	rows, err := db.Query(`SELECT id, host, proto, port, action, dateModified FROM rules`)
 	if err != nil {
 		return nil, err
 	}
@@ -80,10 +98,11 @@ func getAllRules(db *sql.DB) ([]Rule, error) {
 	var rules []Rule
 	for rows.Next() {
 		var r Rule
-		if err := rows.Scan(&r.ID, &r.Host, &r.Proto, &r.Port, &r.Action); err != nil {
+		if err := rows.Scan(&r.ID, &r.Host, &r.Proto, &r.Port, &r.Action, &r.DateModified); err != nil {
 			return nil, err
 		}
 		rules = append(rules, r)
 	}
 	return rules, nil
 }
+
