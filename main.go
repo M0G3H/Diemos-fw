@@ -348,6 +348,7 @@ func json_err(msg string) {
 }
 
 func is_default_rule(r *Rule) bool {
-	return (r.Action == "allow" && r.Host == "any" && r.Proto == "udp" && r.Port == "443") ||
-		(r.Action == "allow" && r.Host == "127.0.0.1" && r.Proto == "any" && r.Port == "any")
+	return (r.Action == "allow" && r.Host == "127.0.0.1" && r.Proto == "any" && r.Port == "any")||
+				(r.Action == "allow" && r.Host == "any" && r.Proto == "tcp" && r.Port == "22")
 }
+
