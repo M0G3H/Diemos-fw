@@ -16,7 +16,15 @@ New rules are inserted at the top of the chain (position #1)
 
 ### 3.Advance Filtering  
 Port-Specific Filtering  -> also ipv6  
-Host-Based Filtering  
+Host-Based Filtering
+
+### 4.Rule Existence Validation
+Prevents duplicate rule creation by checking if a rule already exists in the database before adding it
+Improves performance by preventing unnecessary iptables/ip6tables commands
+
+### 5.Complete Rules Flush Functionality
+Clears all firewall rules with the flush command
+
 
 
 ## Installing Diemos-fw
