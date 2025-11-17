@@ -28,6 +28,9 @@ Clears all firewall rules with the flush command
 ### 6.Default Rule Protection 
 protects critical default rules from being deleted(port 22 and loopback )
 
+### 7.Date Modified
+The Date Modified feature adds automatic timestamp tracking to all firewall rules
+
 
 
 ## Installing Diemos-fw
