@@ -37,8 +37,9 @@ The Date Modified feature adds automatic timestamp tracking to all firewall rule
 The package need to be compiled so make sure you have "GO"
 ```bash
 git clone https://github.com/M0G3H/Diemos-fw.git
-go build
-install -m 755 Diemos-fw /usr/local/bin
+cd Diemos-fw/
+chmod +x install.sh
+sudo bash install.sh
 ```
 and if you want Diemos-fw to be always up , do this
 ```bash
